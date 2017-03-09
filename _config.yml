@@ -6,8 +6,8 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: yikai.shao的技术博客
-brief-intro: 技术交流
+title: yikai.shao
+brief-intro: Backend Dev Engineer
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://shaoyikai.github.io" # the base hostname & protocol for your site
 
@@ -17,13 +17,11 @@ permalink: /:year/:month/:day/:title/
 github_username:  shaoyikai
 email: shaoyikai@qq.com
 
-description_footer: 技术小站！
-
 # comments
 # two ways to comment, only choose one, and use your own short name
 # 两种评论插件，选一个就好了，使用自己的 short_name
 
-#duoshuo_shortname: hygblog
+duoshuo_shortname: shaoyikai
 #disqus_shortname: #gaohaoyang
 
 # statistic analysis 统计代码
