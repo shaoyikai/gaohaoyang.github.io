@@ -11,44 +11,24 @@
 
     /**
      * 内容JSON
-     */
-    var demoContent = [
-        {
+     * {
             demo_link: 'https://codepen.io/haoyang/pen/jrvrQq',
             img_link: 'https://ooo.0o0.ooo/2016/11/24/5836d81f48cd2.png',
             code_link: 'https://codepen.io/haoyang/pen/jrvrQq',
             title: 'Fisher-Yates 洗牌算法动画',
             core_tech: 'JavaScript',
             description: 'Fisher-Yates 洗牌算法动画。算法详情见 <a href ="https://gaohaoyang.github.io/2016/10/16/shuffle-algorithm/">这里</a>。'
-        },{
-        demo_link: 'http://gaohaoyang.github.io/test/headerTransition/',
-        img_link: 'https://ooo.0o0.ooo/2016/06/20/5768c1597d1fe.png',
-        code_link: 'https://github.com/Gaohaoyang/test/tree/master/headerTransition',
-        title: 'Header Transition 渐变动画',
-        core_tech: 'jQuery BootStrap CSS3',
-        description: '花费不到半小时帮师兄做了一个简单的 CSS3 动画效果，当页面滚动到指定距离时，header 区的背景色由透明变为蓝色。仿照了网站 <a href ="https://quorrajs.org/">https://quorrajs.org/</a> 的 Header 区动画效果。'
-    }, {
-        demo_link: 'http://gaohaoyang.github.io/mask-fade-out/',
-        img_link: 'http://7q5cdt.com1.z0.glb.clouddn.com/demo-fade-out.png',
-        code_link: 'https://github.com/Gaohaoyang/mask-fade-out',
-        title: '遮罩层按指定路径缩小消失',
-        core_tech: 'jQuery CSS',
-        description: '使用 animate 方法，做到兼容 IE8。曾在联想服务官网上线3个月。'
-    }, {
-        demo_link: 'http://gaohaoyang.github.io/ToDo-WebApp/',
-        img_link: 'http://7q5cdt.com1.z0.glb.clouddn.com/blog-todoWebApp.png',
-        code_link: 'https://github.com/Gaohaoyang/ToDo-WebApp',
-        title: '百度前端学院 task0004 ToDo 应用(移动端)',
-        core_tech: 'JavaScript LocalStorage requireJS Sass Gulp XSS',
-        description: '在任务三中，做了一个 PC 端的 ToDo 应用。任务四是将它优化，以适应移动端设备。'
-    }, {
-        demo_link: 'http://gaohaoyang.github.io/baidu-ife-practice/task0003/',
-        img_link: 'http://7q5cdt.com1.z0.glb.clouddn.com/demo-todo.png',
-        code_link: 'https://github.com/Gaohaoyang/baidu-ife-practice/tree/master/task0003',
-        title: '百度前端学院 task0003 ToDo 应用',
-        core_tech: 'JavaScript LocalStorage',
-        description: '任务三，ToDo 单页应用，主要使用了 LocalStorage 存储数据，使用 JSON 模拟了 3 张数据表。'
-    }];
+        }
+     */
+    var demoContent = [
+       {
+            demo_link: 'http://codepen.io/shaoyikai/pen/gmgoxg',
+            img_link: 'https://ooo.0o0.ooo/2017/03/09/58c15f32932ba.png',
+            code_link: 'http://codepen.io/shaoyikai/pen/gmgoxg',
+            title: '简洁的javascript日历插件',
+            core_tech: 'JavaScript',
+            description: '一个简洁的日历插件，很容易修改。'
+        }];
 
     contentInit(demoContent) //内容初始化
     waitImgsLoad() //等待图片加载，并执行布局初始化
@@ -61,22 +41,7 @@
  * @return {[type]} [description]
  */
 function contentInit(content) {
-    // var htmlArr = [];
-    // for (var i = 0; i < content.length; i++) {
-    //     htmlArr.push('<div class="grid-item">')
-    //     htmlArr.push('<a class="a-img" href="'+content[i].demo_link+'">')
-    //     htmlArr.push('<img src="'+content[i].img_link+'">')
-    //     htmlArr.push('</a>')
-    //     htmlArr.push('<h3 class="demo-title">')
-    //     htmlArr.push('<a href="'+content[i].demo_link+'">'+content[i].title+'</a>')
-    //     htmlArr.push('</h3>')
-    //     htmlArr.push('<p>主要技术：'+content[i].core_tech+'</p>')
-    //     htmlArr.push('<p>'+content[i].description)
-    //     htmlArr.push('<a href="'+content[i].code_link+'">源代码 <i class="fa fa-code" aria-hidden="true"></i></a>')
-    //     htmlArr.push('</p>')
-    //     htmlArr.push('</div>')
-    // }
-    // var htmlStr = htmlArr.join('')
+
     var htmlStr = ''
     for (var i = 0; i < content.length; i++) {
         htmlStr +=

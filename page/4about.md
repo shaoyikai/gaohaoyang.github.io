@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: 关于我
 permalink: /about/
 icon: heart
 type: page
@@ -17,6 +17,6 @@ type: page
 
 
 
-## Comments
+## 评论
 
 {% include comments.html %}
