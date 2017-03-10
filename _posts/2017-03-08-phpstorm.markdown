@@ -1,11 +1,20 @@
 ---
 layout: post
-title:  "如何使用phpstorm编辑github代码？"
+title:  "如何使用PhpStorm编辑GitHub代码？"
 date:   2017-03-08
-categories: tools
-tags: phpstorm
-excerpt: phpstorm编辑github代码
+categories: Tools
+tags: PhpStorm
+excerpt: 使用强大的PhpStorm来编辑托管在GitHub上的项目代码
 ---
 
-> 第一部打开phpstorm
-> 打开项目
+### 方法一
+
+  1. 首先，在github上新建一个project
+  2. 然后，clone此项目到电脑上
+  3. 最后，用PhpStorm打开此project即可。
+
+### 方法二
+
+  1. 打开PhpStorm，如果打开后开启了其他项目，可以先close这个项目
+  2. 然后选择“Check out from Version Control”
+  3. 选择github，输入账号密码后，等待下载打开。
