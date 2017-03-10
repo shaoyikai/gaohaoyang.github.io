@@ -47,5 +47,8 @@ let roots = numbers.map(function(x) {
 map 和 reduce 非常相似，只是map返回的仍是array，reduce可以返回任何格式。
 
 
+#### 好处
+
+经常用map和reduce可以使代码更紧凑简洁，便于维护。
 
 > 参考：[Understand Javascript Array Reduce in 1 Minute](https://www.airpair.com/javascript/javascript-array-reduce)
