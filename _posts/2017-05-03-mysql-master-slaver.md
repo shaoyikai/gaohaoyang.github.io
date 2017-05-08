@@ -25,9 +25,6 @@ a.基于程序代码内部实现
 
 b.基于中间代理实现，不如mysql官方的 `MySQL-Proxy`
 
-说了这么多，可能很多人会有疑问，具体怎么实施呢？下面我们来详细说明下具体的流程。
-
-
 ### 配置MYSQL主从复制
 
 三个ubuntu虚拟机，ip如下：
@@ -37,7 +34,97 @@ b.基于中间代理实现，不如mysql官方的 `MySQL-Proxy`
 
 好文参考
 
+------------------------------------------------------------
+### 配置`master`服务，修改 /etc/mysql/my.cnf
+
+bind-address            = 172.23.158.82
+
+```shell
+
+ server-id              = 82
+ log_bin                = /var/log/mysql/mysql-bin.log
+ expire_logs_days        = 10
+ max_binlog_size         = 100M
+ binlog_do_db           = first_db
+```
+重启mysql
+
+```shell
+sudo service mysql restart
+```
+### 创建Replication用户
+
+1. 使用命令行登陆mysql
+2. 创建一个账户
+```shell
+mysql > CREATE USER 'repl'@'172.23.158.82' IDENTIFIED BY '123456';
+```
+3. 授予其replication权限
+```shell
+mysql > GRANT REPLICATION SLAVE ON *.* TO 'repl'@'172.23.158.82';
+```
+4. 刷新权限
+```shell
+mysql > GRANT REPLICATION SLAVE ON *.* TO 'repl'@'172.23.158.82';
+```
+
+### 查看Master信息
+```shell
+mysql> show master status;
++------------------+----------+--------------+------------------+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |
++------------------+----------+--------------+------------------+
+| mysql-bin.000010 |      107 | first_db     |                  |
++------------------+----------+--------------+------------------+
+1 row in set (0.00 sec)
+
+```
+
+记录 File 和 Position 值
+
+
+### Configure the Slaves
+
+bind-address            = 172.23.158.101
+
+```shell
+
+ server-id              = 101
+ log_bin                = /var/log/mysql/mysql-bin.log
+ expire_logs_days        = 10
+ max_binlog_size         = 100M
+ binlog_do_db           = first_db
+```
+
+重启mysql
+```shell
+sudo service mysql restart
+```
+### Enable Replication
+
+1. Log into the MySQL console.
+mysql -u root -p
+2. Configure connection to master server.
+```shell
+CHANGE MASTER TO
+MASTER_HOST='172.23.158.82',
+MASTER_USER='repl',
+MASTER_PASSWORD='123456',
+MASTER_LOG_FILE='mysql-bin.000010',
+MASTER_LOG_POS=107;
+```
+
+3. Start slave to enable replication.
+
+```shell
+START SLAVE;
+```
+
+这样mysql主从复制就配置好了。
 http://www.serverlab.ca/tutorials/linux/database-servers/how-to-create-a-mysql-master-slave-cluster-on-ubuntu-14/
+
+--------------------------------------------------------------------------
+
 
 http://www.cnblogs.com/crazylqy/p/5542558.html
 
@@ -53,3 +140,9 @@ mysql主从复制与读写分离
 
 修改mysql-proxy的脚本
 进入到/usr/share/mysql-proxy/目录下，修改rw-splitting.lua
+
+启动mysql-proxy
+
+sudo mysql-proxy --defaults-file=/etc/mysql-proxy.cnf
+netstat -tupln | grep 4040
+mysql -uproxy -h 172.23.158.101 -P 4040 -pproxy123
