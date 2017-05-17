@@ -11,7 +11,9 @@ type: page
 
 ##### 简介
 
-热爱前端技术的后端开发工程师
+* 概述：一个热爱技术的互联网开发工程师
+* 标签：`php` `javascript` `mysql` `apache` `nginx` `yii2` `codeigniter`
+* Learning and learning
 
 
 ##### 联系
@@ -19,6 +21,6 @@ type: page
 * GitHub: [shaoyikai](https://github.com/shaoyikai)
 * Email: [shaoyikai@qq.com](mailto:shaoyikai@qq.com)
 
-#### 评论
+<!-- #### 评论 -->
 
 {% include comments.html %}
