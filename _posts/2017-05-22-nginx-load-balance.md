@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "nginx负载均衡很简单！"
+title:  "nginx负载均衡"
 date:   2017-05-22
 categories: nginx
 tags: nginx 负载均衡

@@ -28,7 +28,8 @@ for ( var i = 0; i < numbers.length; i++ ){
 
 var sum = [1, 5, 7, 3, 8, 9].reduce(
   function(total, num){ return total + num }
-  , 0);
+  , 0
+);
 
 ```
 
