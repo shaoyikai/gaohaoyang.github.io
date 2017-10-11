@@ -2,7 +2,7 @@
 layout: post
 title:  "优秀的php小框架slim"
 date:   2017-08-23
-categories: PHP
+categories: php
 tags: Slim
 excerpt: php框架slim 
 ---
