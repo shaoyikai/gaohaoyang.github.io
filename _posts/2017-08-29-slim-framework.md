@@ -4,7 +4,7 @@ title:  "优秀的php小框架slim"
 date:   2017-08-23
 categories: php
 tags: Slim
-excerpt: php框架slim 
+excerpt: php框架slim
 ---
 
 #### 简介
@@ -67,5 +67,7 @@ RewriteRule ^ index.php [QSA,L]
 ```
 
 #### 更多
+
+示例代码：[slim-example](https://github.com/shaoyikai/slim-example)
 
 官方文档：[www.slimframework.com/docs/](https://www.slimframework.com/docs/)
