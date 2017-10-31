@@ -7,6 +7,9 @@ tags: datatables
 excerpt: 一款优秀的table扩展，可以对表格数据进行搜索、排序、分页等。
 ---
 
+> 说明：本文翻译自 [DataTables官方文档](https://www.datatables.net)，译者：yikai.shao
+
+
 DataTables有两种处理数据的模式（排序，搜索，分页等）：
 
   - 客户端处理 - 所有的数据在前端已经加载，由浏览器进行处理。
@@ -452,3 +455,110 @@ $('#example').DataTable( {
     }
 } );
 ```
+
+#### 服务端处理
+
+从DOM读取数据比较慢而且笨拙，尤其是面对巨量的数据时。通过服务端处理，可以将这个“重活”交给服务端的数据库引擎来处理，这样你就可以轻松应对百万级别的数据了。
+
+使用服务端处理的时候，DataTables在页面上渲染信息的时候都会发送ajax请求（例如分页，排序，搜索等）。DataTables会发送变量到服务端，然后取回DataTables需要的响应格式的数据。
+
+服务端处理可以通过`serverSide`配置项来激活，服务端处理路径可以用`ajax`配置。
+
+##### Sent parameters
+
+使用服务端处理的时候，DataTables需要发送以下数据给服务端，以便让服务端知道需要什么样的数据。
+
+![Alt text](/image/2017/datatables_04.png "sent parameters")
+![Alt text](/image/2017/datatables_05.png "sent parameters")
+
+```javascript
+{
+    "draw": 1,
+    "recordsTotal": 57,
+    "recordsFiltered": 57,
+    "data": [
+        [
+            "Angelica",
+            "Ramos",
+            "System Architect",
+            "London",
+            "9th Oct 09",
+            "$2,875"
+        ],
+        [
+            "Ashton",
+            "Cox",
+            "Technical Author",
+            "San Francisco",
+            "12th Jan 09",
+            "$4,800"
+        ],
+        ...
+    ]
+}
+```
+##### Returned data
+
+一旦DataTables带着如上参数去服务端请求数据，服务端会返回以下属性的json数据。
+![Alt text](/image/2017/datatables_06.png "sent parameters")
+
+以上参数可以控制整个table，以下参数可以作用于单独的行：
+
+![Alt text](/image/2017/datatables_07.png "sent parameters")
+
+```javascript
+{
+    "draw": 1,
+    "recordsTotal": 57,
+    "recordsFiltered": 57,
+    "data": [
+        {
+            "DT_RowId": "row_3",
+            "DT_RowData": {
+                "pkey": 3
+            },
+            "first_name": "Angelica",
+            "last_name": "Ramos",
+            "position": "System Architect",
+            "office": "London",
+            "start_date": "9th Oct 09",
+            "salary": "$2,875"
+        },
+        {
+            "DT_RowId": "row_17",
+            "DT_RowData": {
+                "pkey": 17
+            },
+            "first_name": "Ashton",
+            "last_name": "Cox",
+            "position": "Technical Author",
+            "office": "San Francisco",
+            "start_date": "12th Jan 09",
+            "salary": "$4,800"
+        },
+        ...
+    ]
+}
+```
+
+配置示例：
+
+```javascript
+$('#example').DataTable( {
+    serverSide: true,
+    ajax: '/data-source'
+} );
+
+// 或者！
+$('#example').DataTable( {
+    serverSide: true,
+    ajax: {
+        url: '/data-source',
+        type: 'POST'
+    }
+} ); 
+```
+
+[完整示例](https://www.datatables.net/examples/server_side/simple.html)
+
+![Alt text](/image/2017/datatables_08.png "sever-side processing")
