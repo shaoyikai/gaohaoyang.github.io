@@ -146,3 +146,7 @@ mysql主从复制与读写分离
 sudo mysql-proxy --defaults-file=/etc/mysql-proxy.cnf
 netstat -tupln | grep 4040
 mysql -uproxy -h 172.23.158.101 -P 4040 -pproxy123
+
+
+
+[mysql全文索引好文](http://www.cnblogs.com/feichexia/archive/2012/06/09/2543049.html)
